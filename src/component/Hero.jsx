@@ -3,7 +3,7 @@ import {MdOutlineLocalOffer } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 const Hero = () => {
   return (
-    <section className='relative bg-hero bg-center bg-no-repeat h-screen w-full'>
+    <section className='relative bg-hero bg-center bg-no-repeat h-screen w-full '>
       <div className='max_padd_container relative top-32 xs:top-52'>
         <h1 className='h1 capitalize max-w-[37rem]'>
           Digital Shopping Hub Junction

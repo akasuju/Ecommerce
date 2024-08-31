@@ -5,7 +5,7 @@ import { Category } from "./pages/Category";
 import { Product } from "./pages/Product";
 import { Cart } from "./pages/Cart";
 import { Login } from "./pages/Login";
-import { Footer } from "./component/Footer";
+import Footer from "./component/Footer";
 export default function App() {
   return (
     <main className="bg-primary text-tertiary">
