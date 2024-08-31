@@ -3,7 +3,7 @@ import Popular from "../component/Popular.jsx";
 import Offer from "../component/offer.jsx";
 import Hero from "../component/Hero";
 import NewsLetter from "../component/NewsLetter";
-import newcollection from "../component/newcollection";
+import Newcollection from "../component/Newcollection.jsx";
 
 
  const Home = () => {
@@ -13,7 +13,7 @@ import newcollection from "../component/newcollection";
    <Popular/>
  <Offer/>
  <NewsLetter/>
-  <newcollection/>
+  <Newcollection/>
  
    </>
   )

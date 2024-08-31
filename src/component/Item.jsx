@@ -23,7 +23,7 @@ export const Item = ({ id, name, image, old_price, new_price }) => {
       <div className="p-4 overflow-hidden">
         <h4 className="my-[6px] medium-16 line-clamp-2 text-gray-30">{name}</h4>
         <div className="flex gap-5">
-          <div className="bold-16">{new_price}</div>
+          <div className="bold-16">{new_price}.00</div>
           <div className="text-secondary bold-16 line-through">{old_price}</div>
         </div>
       </div>
