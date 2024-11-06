@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 
-
-export const Category = () => {
+// eslint-disable-next-line no-unused-vars
+export const Category = ({Category, banner}) => {
   return (
     <div>Category</div>
   )
