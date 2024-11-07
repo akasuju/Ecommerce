@@ -1,4 +1,4 @@
-import{ TbArrowRight } from './Icons'
+import{ TbArrowRight } from '.react-icons/tb';
 
 const ProductHD = () => {
   return (

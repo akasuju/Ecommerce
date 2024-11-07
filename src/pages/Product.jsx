@@ -1,6 +1,7 @@
 import { useContext } from "react";
+import { ShopContext } from "../context/ShopContext";
+
 import { useParams } from "react-router-dom";
-import { ShopContext } from "../contexts/ShopContext";
 import ProductHD from "../component/ProductHD";
 
 const Product = () => {
