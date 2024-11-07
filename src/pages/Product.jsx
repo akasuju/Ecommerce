@@ -1,8 +1,20 @@
+import { useContext } from "react"
+import { useParams } from "react-router-dom";
+import { ShopContext } from "../context/ShopContext";
+import ProductHD from "../component/ProductHD";
 
-
-export const Product = () => {
+ const Product = () => {
+  const {all_products} =useContext(ShopContext);
+  const {productId}= useParams();
+  const product =all_products.find((e)=>e.id === Number(productId))
   return (
-    <div>Product</div>
+<section>
+  <div>
+    <ProductHD product={product}/>
+  </div>
+</section>
   )
+    
+  
 }
-export default Product;
+export default Product
