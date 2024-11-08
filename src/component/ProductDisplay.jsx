@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import product_rt_1 from '../assets/product_rt_1.png'
 import product_rt_2 from '../assets/product_rt_2.png'
