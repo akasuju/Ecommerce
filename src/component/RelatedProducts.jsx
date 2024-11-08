@@ -1,12 +1,10 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react'
-import { Item } from './Item.jsx'
-import { POPULAR } from '../assets/data'
- const Popular = () => {
+import Item from "./components/Item";
+import { POPULAR } from "../assets/data";
+const RelatedProducts = () => {
   return (
-   <section className=' bg-primary'>
+    <section className=' bg-primary'>
     <div className='max_padd_container py-12 xl:py-28 xl:w[88%]'>
-        <h3 className='h3 text-center'>Popular Products</h3>
+        <h3 className='h3 text-center'>Related Products</h3>
         <hr className='h-[3px]md:w-1/2 mx-auto bg-gradient-to-l from transparent via-black
         to-transparent mb-16' />
         <div className='grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6'>
@@ -19,4 +17,5 @@ import { POPULAR } from '../assets/data'
    </section>
   )
 }
-export default Popular;
+
+export default RelatedProducts;
