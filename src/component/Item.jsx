@@ -9,8 +9,8 @@ export const Item = ({ id, name, image, old_price, new_price }) => {
     <div className="rounded-xl overflow-hidden shadow-lg">
       <div className="relative flexCenter group overflow-hidden transition-all duration-100">
         <Link
-          to={`product/${id}`}
-          className="h-12 w-12 bg-white rounded-full flexCe~nter absolute top-1/2 !py-2 z-20 scale-0 group-hover:scale-100 transition-all duration-700"
+          to={`/product/${id}`}
+          className="h-12 w-12 bg-white rounded-full flexCenter absolute top-1/2 !py-2 z-20 scale-0 group-hover:scale-100 transition-all duration-700"
         >
           <FaSearch className="scale-125 hover:rotate-90 hover:scale-125 trasition-all-duration-200"></FaSearch>
         </Link>
