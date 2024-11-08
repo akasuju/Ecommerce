@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { TbArrowRight } from "react-icons/tb";
 
 const ProductHD = (props) => {

@@ -17,7 +17,7 @@ const Product = () => {
       <div>
         <ProductHD product={product} />
         <ProductDisplay product={product}/>
-        <ProductDescription/>
+        <ProductDescription product={product} />
       </div>
     </section>
   );

@@ -2,18 +2,18 @@ const ProductDescription = () => {
   return (
     <div className="mt-20">
       <div className="flex gap-3 mb-4 ">
-        <button className="btn_darl_rounded !rounded-none !text-xas !py-[6px] w-36">
+        <button className="btn_dark_rounded !rounded-none !text-xs !py-[6px] w-36">
           Description
         </button>
-        <button className="btn_darl_outline !rounded-none !text-xas !py-[6px] w-36">
+        <button className="btn_dark_outline !rounded-none !text-xs !py-[6px] w-36">
           Care Guide
         </button>
-        <button className="btn_darl_outline !rounded-none !text-xas !py-[6px] w-36">
+        <button className="btn_dark_outline !rounded-none !text-xs !py-[6px] w-36">
           Size Guide
         </button>
       </div>
       <div className="flex flex-col pb-16">
-        <p>
+        <p className="text-sm">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero saepe
           fugiat mollitia in, laborum magnam illum ipsa, molestias tempora harum
           et corrupti eligendi labore dolore deleniti ipsam soluta at?
