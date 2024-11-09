@@ -3,7 +3,7 @@ import Header from "./component/Header";
 import Home from "./pages/Home";
 import { Category } from "./pages/Category";
 import  Product  from "./pages/Product";
-import { Cart } from "./pages/Cart";
+import Cart from "./pages/Cart";
 import  Login  from "./pages/Login";
 import Footer from "./component/Footer";
 import bannermens from "./assets/bannermens.png";

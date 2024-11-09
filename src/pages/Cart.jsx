@@ -1,8 +1,10 @@
+import CartItems from "../component/CartItems";
 
-
-export const Cart = () => {
+const Cart = () => {
   return (
-    <div>Cart</div>
+    <div>
+      <CartItems />
+    </div>
   )
 }
 export default Cart;

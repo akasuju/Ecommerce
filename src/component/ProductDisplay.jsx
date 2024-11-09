@@ -6,6 +6,7 @@ import product_rt_4 from '../assets/product_rt_4.png'
 import { MdStar } from 'react-icons/md'
 import { useContext } from "react";
 import { ShopContext } from "../Context/ShopContext";
+
 const ProductDisplay = (props) => {
     const  {product}  = props;
     const {addToCart}= useContext(ShopContext);
