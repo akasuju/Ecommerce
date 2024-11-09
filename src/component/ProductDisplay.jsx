@@ -4,9 +4,11 @@ import product_rt_2 from '../assets/product_rt_2.png'
 import product_rt_3 from '../assets/product_rt_3.png'
 import product_rt_4 from '../assets/product_rt_4.png'
 import { MdStar } from 'react-icons/md'
+import { useContext } from "react";
+import { ShopContext } from "../Context/ShopContext";
 const ProductDisplay = (props) => {
     const  {product}  = props;
-    
+    const {addToCart}= useContext(ShopContext);
   return (
    <section>
     <div className='flex flex-col gap-14 xl:flex-row'>
@@ -44,7 +46,7 @@ const ProductDisplay = (props) => {
                     <div className='ring-2 ring-slate-900/10 h-10 w-10 flexCenter cursor-pointer'>XL</div>
                 </div>
                 <div className='flex flex-col gap-y-3 mb-4 max-2-[555px]'>
-                    <button className='btn_dark_outline !rounded-none uppercase regular-14 tracking-wideset' >Add to Cart</button>
+                    <button onClick={()=>{addToCart(product.id)}} className='btn_dark_outline !rounded-none uppercase regular-14 tracking-wideset' >Add to Cart</button>
                     <button className='btn_dark_rounded !rounded-none uppercase regular-14 tracking-wideset'>Buy it now</button>
                 </div>
                 <p className='medium-16 text-tertiary'><span>category: </span>Women | Jacket | Winter</p>
