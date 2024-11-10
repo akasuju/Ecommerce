@@ -39,6 +39,59 @@ app.post("/upload",upload.single('product'),(req,res)=>{
     Image_url: `http://localhost:${port}/images/${req.file.filename}`    
     });
 });
+//schema for creating products
+const Product=mongoose.model("product",{
+    id:{
+      type: Number,
+        required: true,
+    },
+    name:{
+        type: String,
+        required: true,
+    },
+    image:{
+        type: String,
+        required: true,
+    },
+    category:{
+        type: String,
+        required: true,
+    },
+    new_price:{
+        type: Number,
+        required: true,
+    },
+    old_price:{
+        type: Number,
+        required: true,
+    },
+    Date:{
+        type: Date,
+        default: Date.now,
+    },
+    available:{
+        type: Boolean,
+        required: true,
+    },
+
+});
+
+app.post("/addproduct",async(req,res)=>{
+   const product=new Product({
+    id:req.body.id,
+    name:req.body.name,
+    image:req.body.image,
+    category:req.body.category,
+   })
+console.log(product);
+   await product.save();
+   console.log("Product added");
+   res.json({
+sucess:true,
+message:"Product added",
+
+   });
+});
 
 app.listen(port,(error)=>{
     if(error){
