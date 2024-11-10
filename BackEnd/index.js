@@ -49,17 +49,17 @@ const Product=mongoose.model("product",{
         type: String,
         required: true,
     },
-    image:{
-        type: String,
-        required: true,
-    },
+    //image:{
+        //type: String,
+        //required: true,
+    //},
     category:{
         type: String,
         required: true,
     },
     new_price:{
         type: Number,
-        required: true,
+        required: false,
     },
     old_price:{
         type: Number,
@@ -76,9 +76,19 @@ const Product=mongoose.model("product",{
 
 });
 
+
 app.post("/addproduct",async(req,res)=>{
+    let products = await Product.find({});
+let id;
+if(products.length>0){
+    let last_product_array = products.slice(-1);
+let last_product = last_product_array[0];
+id = last_product.id+1;
+}else{
+    id=1;
+}
    const product=new Product({
-    id:req.body.id,
+    id:id,
     name:req.body.name,
     image:req.body.image,
     category:req.body.category,
@@ -92,6 +102,10 @@ message:"Product added",
 
    });
 });
+
+// Creating api for add Product
+app.post('removeproduct',async(req,res)=>{
+    const id = req.body.id;})
 
 app.listen(port,(error)=>{
     if(error){
