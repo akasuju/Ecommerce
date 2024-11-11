@@ -1,7 +1,10 @@
+import Navbar from './Component/Navbar';
+import Admin from './Pages/Admin';
 export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <main className='bg-primary text-tertiary'>
+   <Navbar />
+   <Admin/>
+   </main>
   )
 }
