@@ -105,7 +105,7 @@ app.post("/addproduct", async (req, res) => {
 });
 
 // Creating api for add Product
-app.post("removeproduct", async (req, res) => {
+app.post("/removeproduct", async (req, res) => {
   await Product.findOneAndDelete({ id: req.body.id });
   console.log("Product removed");
   res.json({
