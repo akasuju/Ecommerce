@@ -40,7 +40,7 @@ app.use('/images', express.static('upload/images'));
 app.post("/upload", upload.single('product'), (req, res) => {
   res.json({
     sucess: 1,
-    Image_url: `http://localhost:${port}/upload/images/${req.file.filename}`,
+    Image_url: `http://localhost:${port}/images/${req.file.filename}`,
   });
 });
 //schema for creating products
@@ -79,7 +79,7 @@ const Product = mongoose.model("Product", {
   },
 });
 
-app.post("/addproduct", async (req, res) => {
+app.post('/addproduct', async (req, res) => {
   let products = await Product.find({});
   let id;
   if (products.length > 0) {

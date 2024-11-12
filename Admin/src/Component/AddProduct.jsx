@@ -2,6 +2,7 @@ import upload_area from "../assets/upload_area.svg";
 import { MdAdd } from "react-icons/md";
 import { useState } from "react";
 
+
 const AddProduct = () => {
   const [image, setImage] = useState(false);
   const [productDetails, setProductDetails] = useState({
@@ -24,8 +25,8 @@ const AddProduct = () => {
     let responseData;
     let product = productDetails;
     let formData = new FormData();
-    formData.append('product', image);
-    await fetch("http://localhost:4000/upload", {
+    formData.append('image', image);
+    await fetch('http://localhost:4000/upload', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -34,8 +35,8 @@ const AddProduct = () => {
     })
       .then((resp) => resp.json())
       .then((data) => (responseData = data));
-      if(responseData.success){
-       product.image = responseData.image_url;
+      if (responseData.success) {
+       product.image = responseData.image_URL;
        console.log(product);
        await fetch('http://localhost:4000/addproduct', {
           method: 'POST',
@@ -45,11 +46,7 @@ const AddProduct = () => {
           },
           body: JSON.stringify(product),
         }).then((resp) => resp.json()).then((data) => {
-          if(data.success) {
-            console.log("Product Added Successfully");
-          } else {
-            console.log("Failed to add product");
-          }
+         data.success ? alert('Product Added Successfully') : alert('Failed to Add Product');
         });
       }
   };
@@ -62,7 +59,7 @@ const AddProduct = () => {
           value={productDetails.name}
           onChange={changeHandler}
           type="text"
-          name="name"
+          name='name'
           placeholder="Type Here.."
           className="bg-primary outline-none max-w-80 w-full py-3 px-4 rounded-md "
         />
@@ -73,7 +70,7 @@ const AddProduct = () => {
           value={productDetails.old_price}
           onChange={changeHandler}
           type="text"
-          name="old_price"
+          name='old_price'
           placeholder="Type Here"
           className="bg-primary outline-none max-w-80 w-full py-3 px-4 rounded-md "
         />
@@ -84,7 +81,7 @@ const AddProduct = () => {
           value={productDetails.new_price}
           onChange={changeHandler}
           type="text"
-          name="new_price"
+          name='new_price'
           placeholder="Type Here"
           className="bg-primary outline-none max-w-80 w-full py-3 px-4 rounded-md "
         />
@@ -106,7 +103,7 @@ const AddProduct = () => {
       <div>
         <label htmlFor="file-input">
           <img
-            src={image ? URL.createObjectURL(image) : upload_area}
+            src={image?URL.createObjectURL(image) : upload_area}
             alt=""
             className="2-20 rounded-sm inline-block"
           />
