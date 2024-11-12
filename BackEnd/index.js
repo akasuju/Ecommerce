@@ -35,16 +35,16 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 //creating upload endpoint for images
-app.use("/upload", express.static("upload/images"));
+app.use('/images', express.static('upload/images'));
 
-app.post("/upload", upload.single("product"), (req, res) => {
+app.post("/upload", upload.single('product'), (req, res) => {
   res.json({
     sucess: 1,
-    Image_url: `http://localhost:${port}/images/${req.file.filename}`,
+    Image_url: `http://localhost:${port}/upload/images/${req.file.filename}`,
   });
 });
 //schema for creating products
-const Product = mongoose.model("product", {
+const Product = mongoose.model("Product", {
   id: {
     type: Number,
     required: true,
@@ -69,13 +69,13 @@ const Product = mongoose.model("product", {
     type: Number,
     required: true,
   },
-  Date: {
+  date: {
     type: Date,
     default: Date.now,
   },
   available: {
     type: Boolean,
-    required: true,
+    default: true,
   },
 });
 
@@ -94,13 +94,16 @@ app.post("/addproduct", async (req, res) => {
     name: req.body.name,
     image: req.body.image,
     category: req.body.category,
+    new_price: req.body.new_price,
+    old_price: req.body.old_price,
+    
   });
-  console.log(product);
+  console.log(products);
   await product.save();
   console.log("Product added");
   res.json({
     sucess: true,
-    message: "Product added",
+   name: req.body.name,
   });
 });
 
@@ -117,7 +120,7 @@ app.post("/removeproduct", async (req, res) => {
 //Creating api for get all products
 app.get("/allproducts", async (req, res) => {
   let products = await Product.find({});
-  Console.log("All Products are fetched");
+  console.log("All Products are fetched");
   res.send(products);
 });
 

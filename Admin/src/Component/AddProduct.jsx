@@ -24,11 +24,11 @@ const AddProduct = () => {
     let responseData;
     let product = productDetails;
     let formData = new FormData();
-    formData.append("product", image);
+    formData.append('product', image);
     await fetch("http://localhost:4000/upload", {
-      method: "POST",
+      method: 'POST',
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
       body: formData,
     })
@@ -37,6 +37,20 @@ const AddProduct = () => {
       if(responseData.success){
        product.image = responseData.image_url;
        console.log(product);
+       await fetch('http://localhost:4000/addproduct', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(product),
+        }).then((resp) => resp.json()).then((data) => {
+          if(data.success) {
+            console.log("Product Added Successfully");
+          } else {
+            console.log("Failed to add product");
+          }
+        });
       }
   };
 
