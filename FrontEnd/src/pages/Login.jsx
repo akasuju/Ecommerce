@@ -13,12 +13,29 @@ const Login = () => {
   }
 
 const login =async ()=>{
-  console.log("login")
+  console.log("login",  formData);
 
 
 }
 const signup =async ()=>{
-console.log("signup");
+console.log("signup" , formData);
+let responseData;
+await fetch ('http://localhost:4000/signup',
+{
+  method:'POST',
+  headers:{
+    Accept:'application/json',
+    'Content-Type':'application/json',
+  },
+  body:JSON.stringify(formData)
+}).then((response)=>response.json()).then((data)=>responseData=data)
+if(responseData.success){
+  localStorage.setItem("auth-token", responseData.token);
+  if(responseData.success){
+    localStorage.setItem("auth-token", responseData.token);
+    window.location.replace('/');
+  }
+  }
 }
 
   return (
@@ -29,6 +46,8 @@ console.log("signup");
           {state === "Sign Up" ? (
             <input
               name="username"
+              value={formData.username}
+              onChange={handleChange}
               type="text"
               placeholder="Your Name"
               className="h-14 w-full pl-5 bg-slate-900/5 outline-none rounded-xl "
@@ -37,12 +56,17 @@ console.log("signup");
             ""
           )}
           <input
-            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             placeholder="Email Address"
             className="h-14 w-full pl-5  bg-slate-900/5 outline-none rounded-xl"
           />
           <input
             type="Password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
             placeholder="Password"
             className="h-14 w-full pl-5  bg-slate-900/5 outline-none rounded-xl"
           />
