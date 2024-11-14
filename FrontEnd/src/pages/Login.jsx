@@ -15,10 +15,10 @@ const Login = () => {
   const login = async () => {
     console.log("login", formData);
     let responseData;
-    await fetch("http://localhost:4000/signup", {
+    await fetch("http://localhost:4000/login", {
       method: "POST",
       headers: {
-        Accept: "application/formData",
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
@@ -27,12 +27,9 @@ const Login = () => {
       .then((data) => (responseData = data));
     if (responseData.success) {
       localStorage.setItem("auth-token", responseData.token);
-      if (responseData.success) {
-        localStorage.setItem("auth-token", responseData.token);
-        window.location.replace("/");
-      } else {
-        alert(responseData.errors);
-      }
+      window.location.replace("/");
+    } else {
+      alert(responseData.errors);
     }
   };
   const signup = async () => {
@@ -53,8 +50,7 @@ const Login = () => {
       if (responseData.success) {
         localStorage.setItem("auth-token", responseData.token);
         window.location.replace("/");
-      } 
-      else {
+      } else {
         alert(responseData.errors);
       }
     }
