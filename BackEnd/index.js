@@ -194,7 +194,7 @@ app.post("/login", async (req, res) => {
     }
   }
   else{
-    res.json({success:false, errors:"User not found"});
+    res.json({success:false, errors:"Wrong Email address"});
   }
 });
 

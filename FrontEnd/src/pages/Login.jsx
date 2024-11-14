@@ -10,33 +10,55 @@ const Login = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  }
+  };
 
-const login =async ()=>{
-  console.log("login",  formData);
-
-
-}
-const signup =async ()=>{
-console.log("signup" , formData);
-let responseData;
-await fetch ('http://localhost:4000/signup',
-{
-  method:'POST',
-  headers:{
-    Accept:'application/json',
-    'Content-Type':'application/json',
-  },
-  body:JSON.stringify(formData)
-}).then((response)=>response.json()).then((data)=>responseData=data)
-if(responseData.success){
-  localStorage.setItem("auth-token", responseData.token);
-  if(responseData.success){
-    localStorage.setItem("auth-token", responseData.token);
-    window.location.replace('/');
-  }
-  }
-}
+  const login = async () => {
+    console.log("login", formData);
+    let responseData;
+    await fetch("http://localhost:4000/signup", {
+      method: "POST",
+      headers: {
+        Accept: "application/formData",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => (responseData = data));
+    if (responseData.success) {
+      localStorage.setItem("auth-token", responseData.token);
+      if (responseData.success) {
+        localStorage.setItem("auth-token", responseData.token);
+        window.location.replace("/");
+      } else {
+        alert(responseData.errors);
+      }
+    }
+  };
+  const signup = async () => {
+    console.log("signup", formData);
+    let responseData;
+    await fetch("http://localhost:4000/signup", {
+      method: "POST",
+      headers: {
+        Accept: "application/formData",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => (responseData = data));
+    if (responseData.success) {
+      localStorage.setItem("auth-token", responseData.token);
+      if (responseData.success) {
+        localStorage.setItem("auth-token", responseData.token);
+        window.location.replace("/");
+      } 
+      else {
+        alert(responseData.errors);
+      }
+    }
+  };
 
   return (
     <section className="max_padd_container flexCenter flex-col pt-32">
@@ -71,21 +93,40 @@ if(responseData.success){
             className="h-14 w-full pl-5  bg-slate-900/5 outline-none rounded-xl"
           />
         </div>
-        <button onClick={()=>{state==="Login"?login():signup()}} className="btn_dark_rounded my-5 w-full !rounded-md">
+        <button
+          onClick={() => {
+            state === "Login" ? login() : signup();
+          }}
+          className="btn_dark_rounded my-5 w-full !rounded-md"
+        >
           Continue
         </button>
 
-        {state==="Sign Up"?<p className="text-black font-bold">
-          Already have an Account?
-          <span onClick={()=>{setState("Login") }} className="text-secondary underline cursor-pointer">Login</span>
-        </p> 
-:
-        <p className="text-black font-bold">
-          Create an account?
-          <span onClick={()=>{setState("Sign Up") }} className="text-secondary underline cursor-pointer">
-            Click here
-          </span>
-        </p>}
+        {state === "Sign Up" ? (
+          <p className="text-black font-bold">
+            Already have an Account?
+            <span
+              onClick={() => {
+                setState("Login");
+              }}
+              className="text-secondary underline cursor-pointer"
+            >
+              Login
+            </span>
+          </p>
+        ) : (
+          <p className="text-black font-bold">
+            Create an account?
+            <span
+              onClick={() => {
+                setState("Sign Up");
+              }}
+              className="text-secondary underline cursor-pointer"
+            >
+              Click here
+            </span>
+          </p>
+        )}
 
         <div className="flexCenter mt-6 gap-3">
           <input type="checkbox" name="" id="" />
