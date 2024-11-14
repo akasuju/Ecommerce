@@ -23,9 +23,8 @@ await fetch('http://localhost:4000/removeproduct',{
     'Content-Type':'application/json',
   },
   body:JSON.stringify({id:id}),
-}).then((resp)=>resp.json()).then((data)=>{
-  data.success?alert('Product Removed Successfully'):alert('Failed to Remove Product');
 })
+await fetchInfo();
 
 }
 
@@ -57,7 +56,7 @@ await fetch('http://localhost:4000/removeproduct',{
                   <td>NPR.{product.old_price}</td>
                   <td>NPR.{product.new_price}</td>
                   <td>{product.category}</td>
-                  <td><div className="bold-22 pl-6 sm:pl-14"><TbTrash onClick={()=>remove_product}/></div></td>
+                  <td><div className="bold-22 pl-6 sm:pl-14"><TbTrash onClick={() => remove_product(product.id)}/></div></td>
                 </tr>
               )
             })}
