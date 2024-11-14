@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 const cors = require("cors");
-const { Console } = require("console");
+const { Console, error } = require("console");
 
 app.use(cors());
 app.use(express.json());
@@ -187,7 +187,14 @@ app.post("/login", async (req, res) => {
         },
       };
       const token=jwt.sign(data, 'secret_ecom');
+      res.json({success:true, token});
     }
+    else{
+      res.json({success:false, errors:"Password does not match"});
+    }
+  }
+  else{
+    res.json({success:false, errors:"User not found"});
   }
 });
 
