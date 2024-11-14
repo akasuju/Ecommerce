@@ -136,7 +136,7 @@ const User = mongoose.model("User", {
     type: String,
   },
   carData: {
-    type: onject,
+    type: Object,
   },
   date: {
     type: Date,
@@ -170,7 +170,25 @@ app.post("/signup", async (req, res) => {
     },
   };
   const token=jwt.sign(data, 'secret_ecom');
-  res.json({success:true, token:token});
+  res.json({success:true, token});
+});
+
+//creating endpoint for user listings
+app.post("/login", async (req, res) => {
+  let user=await User.findOne({
+    email:req.body.email,
+  })
+  if(user){
+    const passMatch= req.body.password===user.password;
+    if(passMatch){
+      const data={
+        user:{
+          id:user.id,
+        },
+      };
+      const token=jwt.sign(data, 'secret_ecom');
+    }
+  }
 });
 
 app.listen(port, (error) => {
