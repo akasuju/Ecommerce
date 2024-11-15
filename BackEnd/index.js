@@ -124,7 +124,7 @@ app.get("/allproducts", async (req, res) => {
 });
 
 //Schema user model
-const User = mongoose.model("User", {
+const User = mongoose.model('User', {
   name: {
     type: String,
   },
@@ -135,8 +135,9 @@ const User = mongoose.model("User", {
   password: {
     type: String,
   },
-  carData: {
+  cartData: {
     type: Object,
+
   },
   date: {
     type: Date,
@@ -150,14 +151,14 @@ app.post("/signup", async (req, res) => {
   if (check) {
     return res
       .status(400)
-      .json({ success: false, message: "Email already exists" });
+      .json({ success: false, errors: "Email already exists" });
   }
   let cart={};
-  for (let i=0;i<300; i++){
+  for (let i=0;i < 300; i++){
     cart[i]=0;
   }
   const user = new User({
-    name: req.body.name,
+    name: req.body.username,
     email: req.body.email,
     password: req.body.password,
     cartData: cart,
@@ -216,7 +217,10 @@ app.get("/popularproducts", async (req, res) => {
 
 //creating endpoint for cartdata
 app.post("/addtocart", async (req, res) => {
-  let user=await User.findOne});
+  console.log(req.body);
+});
+
+//Creating middleeware for authentication
 
 app.listen(port, (error) => {
   if (error) {
