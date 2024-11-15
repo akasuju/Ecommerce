@@ -205,7 +205,18 @@ let newCollection=product.slice(1).slice(-8);
 console.log("New Collection fetched");
 res.send(newCollection);
 });
+//endpoint for popular products
+app.get("/popularproducts", async (req, res) => {
+  let products = await Product.find({category:"men"});
+  let popularproducts =products.slice(0,4);
+  console.log("Popular Products fetched");
+  res.send(popularproducts);
 
+});
+
+//creating endpoint for cartdata
+app.post("/addtocart", async (req, res) => {
+  let user=await User.findOne});
 
 app.listen(port, (error) => {
   if (error) {

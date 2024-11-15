@@ -29,7 +29,11 @@ const ShopContextProvider = (props) => {
 
   const addToCart = (itemID) => {
     setCartItems((prev) => ({ ...prev, [itemID]: prev[itemID] + 1 }));
-    console.log(cartItems);
+   if(localStorage.getItem('auth-token')){
+     let cart=JSON.parse(localStorage.getItem('cart'));
+     cart[itemID]=cart[itemID]+1;
+     localStorage.setItem('cart',JSON.stringify(cart));
+   }
   };
 
   const removeFromCart = (itemId) => {
