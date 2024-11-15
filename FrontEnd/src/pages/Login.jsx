@@ -29,13 +29,15 @@ const Login = () => {
       localStorage.setItem("auth-token", responseData.token);
       window.location.replace("/");
     } else {
-      alert(responseData.errors);
+      alert(responseData.errors); 
     }
   };
+
+
   const signup = async () => {
     console.log("signup", formData);
     let responseData;
-    await fetch("http://localhost:4000/signup", {
+    await fetch('http://localhost:4000/signup', {
       method: "POST",
       headers: {
         Accept: "application/formData",
@@ -55,6 +57,32 @@ const Login = () => {
       }
     }
   };
+
+  // const signup = async () => {
+  //   console.log("signup", formData);
+  //   try {
+  //     const response = await fetch("http://localhost:4000/signup", {
+  //       method: "POST",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     const responseData = await response.json();
+  
+  //     if (responseData.success) {
+  //       localStorage.setItem("auth-token", responseData.token);
+  //       window.location.replace("/");
+  //     } else {
+  //       alert(responseData.errors);
+  //     }
+  //   } catch (error) {
+  //     alert("An unexpected error occurred. Please try again later.");
+  //     console.error("Signup Error:", error);
+  //   }
+  // };
+  
 
   return (
     <section className="max_padd_container flexCenter flex-col pt-32">

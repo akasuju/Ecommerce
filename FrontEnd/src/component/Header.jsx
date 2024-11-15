@@ -9,6 +9,10 @@ import logo from "../assets/logo.svg";
 import user from "../assets/user.svg";
 import { useContext } from "react";
 import { ShopContext } from "../Context/ShopContext";
+import logout from "../assets/logout.svg";
+
+
+
 const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
   const toggleMenu = () => {
@@ -54,7 +58,9 @@ const Header = () => {
                 {getTotalCartItems()}
               </span>
             </NavLink>
-            {/*<NavLink
+            
+            {localStorage.getItem('auth-token')?<NavLink
+            onClick={()=>{localStorage.removeItem('auth-token'); window.location.replace("/")}}
               to={"logout"}
               className={
                 "flex gap-2 btn_secondary_rounded flex-center gap-x-2 medium-16 "
@@ -62,14 +68,13 @@ const Header = () => {
             >
               <img src={logout} alt={"logout icon"} height={19} width={19} />{" "}
               <div>Logout</div>
-            </NavLink>*/}
-            <NavLink
-              to={"login"}
-              className={" btn_secondary_rounded flexCenter gap-x-2 medium-16"}
-            >
+            </NavLink>:
+            <NavLink  to={"login"} className={" btn_secondary_rounded flexCenter gap-x-2 medium-16"}>
+             
+            
               <img src={user} alt="userIcon" height={19} width={19} />
               Login
-            </NavLink>
+            </NavLink>}
           </div>
         </div>
       </div>

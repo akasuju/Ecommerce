@@ -1,11 +1,18 @@
 /* eslint-disable react/prop-types */
-import all_products from "../assets/all_products";
-import { Item } from "../component/Item";
+import { useContext } from "react";
 
+import { Item } from "../component/Item";
+import { ShopContext } from "../Context/ShopContext";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
+
+
+
 // eslint-disable-next-line no-unused-vars
-export const Category = ({Category, banner}) => {
+ const Category = ({Category, banner}) => {
+
+  const {all_products}=useContext(ShopContext);
+
   return (
     <section className="max_padd_container py-12 xl:py-28">
       <div>
