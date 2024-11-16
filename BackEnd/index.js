@@ -215,12 +215,26 @@ app.get("/popularproducts", async (req, res) => {
 
 });
 
-//creating endpoint for cartdata
-app.post("/addtocart", async (req, res) => {
-  console.log(req.body);
-});
-
 //Creating middleeware for authentication
+const fetchUser = async (req, res, next) => {
+  const token = req.header('auth-token');
+  if (!token) {
+    return res.status(401).send({ success: false, errors: "Access Denied" });
+  }
+  try {
+    const verified = jwt.verify(token, 'secret_ecom');
+    req.user = data.user;
+    next();
+  } catch (error) {
+    res.status(400).json({ success: false, errors: "Invalid Token" });
+  }
+}
+
+
+//creating endpoint for cartdata
+app.post("/addtocart", fetchUser, async (req, res) => {
+  console.log(req.body, req.user);
+});
 
 app.listen(port, (error) => {
   if (error) {
