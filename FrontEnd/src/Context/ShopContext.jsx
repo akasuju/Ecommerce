@@ -37,7 +37,7 @@ const ShopContextProvider = (props) => {
         'auth-token': `${localStorage.getItem('auth-token')}`,
         'Content-Type': "application/json",
       },
-      body: JSON.stringify({ itemID: itemID}),
+      body: JSON.stringify({ "itemID": itemID}),
     })
       .then((response) => response.json())
       .then((data) => {
